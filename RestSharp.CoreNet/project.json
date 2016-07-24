@@ -1,0 +1,31 @@
+﻿{
+  "version": "105.2.4-rc4-24214-03",
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "System.Collections.Specialized": "4.0.1",
+    "System.Net.Requests": "4.0.11",
+    "System.Reflection": "4.1.0",
+    "System.Reflection.Emit": "4.0.1",
+    "System.Runtime.InteropServices": "4.1.0",
+    "System.Runtime.Serialization.Xml": "4.1.1",
+    "System.Runtime.Serialization.Primitives": "4.1.1",
+    "System.Runtime.Serialization.Formatters": "4.0.0-*",
+    "System.Xml.XmlSerializer": "4.0.11",
+    "System.ComponentModel.TypeConverter": "4.1.0",
+    "Newtonsoft.Json": "9.0.1"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+  "buildOptions": {
+    "define": [ "SIMPLE_JSON_TYPEINFO" ]
+  },
+  "scripts": {
+    "postcompile": [
+      "dotnet pack --no-build -c Release",
+      "\"%project:Directory%\\..\\..\\nuget.exe\" push \"%project:Directory%\\bin\\%compile:Configuration%\\%project:Name%.%project:Version%.nupkg\" -source https://www.nuget.org/api/v2/package -ApiKey ce8251b1-9722-4701-b39d-e72ebc6a9c83"
+    ]
+  }
+}
